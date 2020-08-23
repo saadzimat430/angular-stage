@@ -1,0 +1,104 @@
+<div class="main-content">
+    <div class="col">
+        <app-product-category-menu></app-product-category-menu>
+    </div>
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- loop over products -->
+                <div *ngFor="let product of products" class="col-xl-4 col-md-6">
+
+                    <div class="product">
+                        <div class="product_image" style="display: block; position: relative; box-sizing: border-box;">
+                            <!-- <a routerLink="/products/{{ product.id }}"> -->
+                                <img style="width: 400px; height: 300px; display: block; margin: auto;"
+                                    src="{{ product.imageUrl }}">
+                            <!-- </a> -->
+                        </div>
+                        <div class="product_content">
+                            <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                                <div>
+                                    <div>
+                                        <div class="product_name">
+                                            <!-- <a routerLink="/products/{{ product.id }}"> -->
+                                                {{ product.name }}
+                                            <!-- </a> -->
+                                        </div>
+                                        <div class="product_category">Réf: {{ product.sku }}</div>
+                                    </div>
+                                </div>
+                                <div class="ml-auto text-right">
+                                    <div class="product_price text-right">
+                                        <strong>{{ product.unitPrice | currency:'MAD':'MAD '}}</strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="product_buttons">
+                                <div class="text-right d-flex flex-row align-items-start justify-content-start">
+                                    <div
+                                        class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+                                        <div>
+                                            <div><img src="images/heart_2.svg" class="svg" alt="">
+                                                <div>+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+                                        <div>
+                                            <div><img src="images/cart.svg" class="svg" alt="">
+                                                <div>+</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- if products is empty -->
+                <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    Veuillez patienter ...
+                </div>
+
+            </div>
+
+            <!-- footer -->
+            <div class="footer-pagination">
+                <div class="row">
+                    <div class="col-md-6">
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-8" style="padding-left: 30%;">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="totalElements" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
+
+                                </ngb-pagination>
+                            </div>
+
+                            <div class="col-md-4" style="text-align: right;">
+                                <span class="mr-2">Articles par page</span>
+                                <select (change)="updatePageSize($event.target.value)">
+                                    <option>3</option>
+                                    <option selected="true">6</option>
+                                    <option>10</option>
+                                    <option>20</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

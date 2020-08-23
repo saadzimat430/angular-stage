@@ -1,0 +1,106 @@
+<div class="page-wrapper">
+
+  <!--  
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a routerLink="/products">
+        <img src="assets/images/logo.png" class="img-responsive">
+      </a>
+    </div>
+
+     <app-product-category-menu></app-product-category-menu>
+
+  </aside> -->
+
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+
+        <div class="container-fluid">
+
+          <div class="row">
+
+            <div class="col-xl-3 col-lg-2">
+              <a routerLink="/products" style="display: inline-block;">
+                <div id="im"></div>
+              </a>
+            </div>
+
+
+            <div class="col-xl-5 col-lg-6">
+
+              <app-search></app-search>
+
+              <!-- <app-cart-status></app-cart-status> -->
+
+            </div>
+
+            <div class="col-lg-4">
+              <div class="header-block-sav" style="float: right;">
+                <div id="w74">
+                  <i class="fa fa-phone" aria-hidden="true" style="float: left;"></i>
+                  <p style="font-family:verdana; font-weight: bold; float: left;">&nbsp;Service client:&nbsp;</p>
+                  <p style="font-family:verdana; float: right;">&nbsp;06 99 99 99 99</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="account-wrap"></div>
+
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer_content">
+    <div class="container">
+      <div class="row">
+
+        <!-- About -->
+        <div class="col-lg-4 footer_col">
+          <div class="footer_contact">
+            <div class="footer_title">A propos</div>
+            <div class="newsletter">
+              <p>1010montures : votre opticien en ligne
+
+                1010montures.com est un site spécialisé dans la vente de lunettes de marque sur Internet. 1010montures
+                vous propose tous les services et la qualité d’un opticien traditionnel à moitié prix.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="col-lg-4 footer_col">
+          <div class="footer_menu">
+            <div class="footer_title">Contact</div>
+            <ul class="footer_list">
+              <li>
+                <a href="mailto:montures@1010montures.com">
+                  <div>contact@1010montures.com<div class="footer_tag_1">online now</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Footer Contact -->
+        <div class="col-lg-4 footer_col">
+          <div class="footer_contact">
+            <div class="footer_title">Pour plus d'infos</div>
+            <div class="newsletter">
+              <h2>Visitez <a href="http://www.1010mag.com">www.1010mag.com</a></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

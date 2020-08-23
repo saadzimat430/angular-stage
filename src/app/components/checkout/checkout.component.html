@@ -1,0 +1,188 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <!-- checkoutFormGroup from checkout.component.ts -->
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+                <!-- customer form group-->
+                <div formGroupName="customer" class="form-area">
+                    <h3>Customer</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>First Name</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="firstName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Last Name</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="lastName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Email</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="email" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div formGroupName="shippingAddress" class="form-area">
+                    <h3>Shipping Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>City</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="city">
+                                    <option>Casablanca</option>
+                                    <option>Rabat</option>
+                                    <option>Marrakech</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Street</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="street" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>ZIP Code</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="zipCode" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div formGroupName="creditCard" class="form-area">
+                    <h3>Credit Card</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Card Type</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="cardType">
+                                    <option>Mastercard</option>
+                                    <option>Visa</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Name on Card</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="nameOnCard" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Card Number</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="cardNumber" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Security Code (CVV)</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <input formControlName="securityCode" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Expiration Month</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationMonth">
+                                    <option>January - 01</option>
+                                    <option>February - 02</option>
+                                    <option>March  - 03</option>
+                                    <option>April - 04</option>
+                                    <option>May - 05</option>
+                                    <option>June - 06</option>
+                                    <option>July - 07</option>
+                                    <option>August - 08</option>
+                                    <option>September - 09</option>
+                                    <option>October - 10</option>
+                                    <option>November - 11</option>
+                                    <option>December - 12</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Expiration Year</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="expirationYear">
+                                    <option>2020</option>
+                                    <option>2021</option>
+                                    <option>2022</option>
+                                    <option>2023</option>
+                                    <option>2024</option>
+                                    <option>2025</option>
+                                    <option>2026</option>
+                                    <option>2027</option>
+                                    <option>2028</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- order details: review your order -->
+                <div class="form-area">
+                    <h3>Review Your Order</h3>
+
+                    <p>Total Quantity: <span style="font-weight: bold;">{{ totalQuantity }}</span></p>
+                    <p>Shipping: <span style="font-weight: bold;">FREE</span></p>
+                    <p>
+                        Total Price: <span style="font-weight: bold;">{{ totalPrice | currency:'MAD' }}</span>
+                    </p>
+                </div>
+
+                <!-- submit button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Purchase</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>
