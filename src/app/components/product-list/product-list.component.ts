@@ -14,7 +14,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
   previousCategoryId: number = 1;
-  currentCategoryId: number = 1;
+  currentCategoryId: number = 2;
   searchMode: boolean = false;
 
   pageNumber: number = 1;
@@ -69,8 +69,8 @@ export class ProductListComponent implements OnInit {
       // get the "id" param string and convert it to number using "+"
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
     } else {
-      // default is category id 1
-      this.currentCategoryId = 1;
+      // default is category id 2
+      this.currentCategoryId = 2;
     }
 
     // if we have a different category_id than previous

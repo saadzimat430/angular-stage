@@ -1,0 +1,57 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <h3>Create Product</h3>
+            <div style="width: 400px; margin: auto;">
+                <div class="submit-form">
+                    <div *ngIf="!submitted">
+                        <div class="form-group">
+                            <label for="sku">SKU</label>
+                            <input type="text" class="form-control" id="sku" required [(ngModel)]="product.sku" name="sku" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input class="form-control" id="name" required [(ngModel)]="product.name" name="name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <input type="text" class="form-control" id="description" required [(ngModel)]="product.description" name="description" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unitPrice">Unit Price</label>
+                            <input type="text" class="form-control" id="unitPrice" required [(ngModel)]="product.unitPrice" name="unitPrice" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="unitsInStock">Units in Stock</label>
+                            <input type="text" class="form-control" id="unitsInStock" required [(ngModel)]="product.unitsInStock" name="unitsInStock" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="category">CategoryId</label>
+                            <input type="text" class="form-control" id="category" required [(ngModel)]="product.category" name="category" />
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="image">Select a file:</label>
+                            <input type="file" id="image" name="image" [(ngModel)]="image"> 
+                        </div> -->
+
+                        <button (click)="save()" class="btn btn-success">Submit</button>
+                    </div>
+
+                    <div *ngIf="submitted">
+                        <h4>You submitted successfully!</h4>
+                        <!-- <button class="btn btn-success" (click)="newTutorial()">Add</button> -->
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

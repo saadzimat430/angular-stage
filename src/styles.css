@@ -275,7 +275,8 @@ input.au-input.au-input-xl{
 }
 
 .cart-area.d-n{
-    display:block
+    display:block;
+    float: right;
 }
 
 .cart-area i{
@@ -644,7 +645,10 @@ input.au-input.au-input-xl{
     background: url('https://api.iconify.design/et-magnifying-glass.svg') no-repeat center center / contain;
 }
 
-#w74 { word-wrap: break-word; }
+#w74 { 
+    word-wrap: break-word;
+    float: right;
+}
 
 .header-block-sav .header-block-infos {
     text-align: left;

@@ -65,7 +65,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "angular-ecommerce:build",
-            "disableHostCheck": true
+            "disableHostCheck": false
           },
           "configurations": {
             "production": {

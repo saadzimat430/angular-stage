@@ -15,9 +15,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DevisComponent } from './components/devis/devis.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
 
 const routes: Routes = [
+  {path: 'add-product', component: AddProductComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -25,6 +28,7 @@ const routes: Routes = [
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
+  {path: 'devis', component: DevisComponent},
   {path: '', redirectTo:'/products', pathMatch:'full'},
   {path: '**', redirectTo:'/products', pathMatch: 'full'}
 ];
@@ -38,13 +42,16 @@ const routes: Routes = [
     ProductDetailsComponent,
     CartStatusComponent,
     CartDetailsComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    DevisComponent,
+    AddProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     HttpClientModule,
     NgbModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [ProductService],

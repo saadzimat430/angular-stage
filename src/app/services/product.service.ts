@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../common/product';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { ProductCategory } from '../common/product-category';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin' + ':' + 'gsRkWYKNkQSZ6huw') });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
     const searchUrl =  `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
 
@@ -37,7 +38,7 @@ export class ProductService {
   }
 
   searchProductsPaginate(page: number, pageSize: number, theKeyword: string): Observable<GetResponseProducts> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin' + ':' + 'gsRkWYKNkQSZ6huw') });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
     const searchUrl =  `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}&page=${page}&size=${pageSize}`;
 
@@ -45,7 +46,7 @@ export class ProductService {
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin' + ':' + 'gsRkWYKNkQSZ6huw') });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
     return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl, {headers}).pipe(
       map(response => response._embedded.productCategory)
@@ -53,7 +54,7 @@ export class ProductService {
   }
 
   getProduct(productId: number): Observable<Product> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin' + ':' + 'gsRkWYKNkQSZ6huw') });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
     
     // build URL based on product ID
     const productUrl = `${this.baseUrl}/${productId}`;
@@ -61,8 +62,21 @@ export class ProductService {
     return this.httpClient.get<Product>(productUrl, {headers});
   }
 
+  createProduct(data): Observable<any> {
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
+    return this.httpClient.post(`${this.baseUrl}`, data, {headers});
+  }
+
+  updateProduct(id: number, value: any): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/${id}`, value);
+  }
+
+  deleteProduct(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  }
+
   private getProducts(searchUrl: string): Observable<Product[]> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa('admin' + ':' + 'gsRkWYKNkQSZ6huw') });
+    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
     return this.httpClient.get<GetResponseProducts>(searchUrl, {headers}).pipe(map(response => response._embedded.products));
   }

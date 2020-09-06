@@ -2,7 +2,12 @@
     <ul class="d-flex flex-row align-items-start justify-content-center">
 
         <li *ngFor="let pc of productCategories">
-            <a routerLink="/category/{{ pc.id }}" routerLinkActive="router-link-active">{{ pc.categoryName }}</a>
+            <a routerLink="/articles" routerLinkActive="router-link-active" 
+                *ngIf="pc.id == 1">{{ pc.categoryName }}</a>
+            <a routerLink="/category/{{ pc.id }}" routerLinkActive="router-link-active"
+                *ngIf="pc.id < 6 && pc.id > 1">{{ pc.categoryName }}</a>
+            <a routerLink="/devis" routerLinkActive="router-link-active" 
+                *ngIf="pc.id == 6">{{ pc.categoryName }}</a>
         </li>
 
     </ul>
