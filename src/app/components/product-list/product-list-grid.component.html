@@ -12,8 +12,8 @@
                     <div class="product">
                         <div class="product_image" style="display: block; position: relative; box-sizing: border-box;">
                             <!-- <a routerLink="/products/{{ product.id }}"> -->
-                                <img style="width: 400px; height: 300px; display: block; margin: auto;"
-                                    src="{{ product.imageUrl }}">
+                            <img style="width: 400px; height: 300px; display: block; margin: auto;"
+                                src="{{ product.imageUrl }}">
                             <!-- </a> -->
                         </div>
                         <div class="product_content">
@@ -22,7 +22,7 @@
                                     <div>
                                         <div class="product_name">
                                             <!-- <a routerLink="/products/{{ product.id }}"> -->
-                                                {{ product.name }}
+                                            {{ product.name }}
                                             <!-- </a> -->
                                         </div>
                                         <div class="product_category">Réf: {{ product.sku }}</div>
@@ -33,6 +33,13 @@
                                         <strong>{{ product.unitPrice | currency:'MAD':'MAD '}}</strong>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div>
+                                <a style="display: flex; justify-content: center;">
+                                    <button type="button" (click)="save(product.sku, product.name)" class="btn btn-primary">Créer devis</button>
+                                </a>
+                                <br>
                             </div>
 
                             <!-- <div class="product_buttons">

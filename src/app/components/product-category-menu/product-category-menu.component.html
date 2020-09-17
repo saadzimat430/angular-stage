@@ -6,8 +6,6 @@
                 *ngIf="pc.id == 1">{{ pc.categoryName }}</a>
             <a routerLink="/category/{{ pc.id }}" routerLinkActive="router-link-active"
                 *ngIf="pc.id < 6 && pc.id > 1">{{ pc.categoryName }}</a>
-            <a routerLink="/devis" routerLinkActive="router-link-active" 
-                *ngIf="pc.id == 6">{{ pc.categoryName }}</a>
         </li>
 
     </ul>

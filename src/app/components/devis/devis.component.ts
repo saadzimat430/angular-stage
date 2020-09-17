@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-devis',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DevisComponent implements OnInit {
 
-  constructor() { }
+  ref: string;
+  name: string;
+
+  constructor(private route: ActivatedRoute) {
+
+  }
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.ref = params['ref'];
+      this.name = params['name'];
+  });
   }
 
 }

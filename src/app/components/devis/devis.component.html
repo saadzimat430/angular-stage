@@ -1,1 +1,21 @@
-<p>devis works!</p>
+<div class="main-content">
+    <div class="col">
+        <app-product-category-menu></app-product-category-menu>
+    </div>
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div *ngIf="ref !== undefined && name!==undefined">
+                <h1>Ta référence est: {{ ref }}</h1>
+                <br>
+                <h1>Nom de monture: {{ name }}</h1>
+            </div>
+
+            <div>
+                <img src="https://i.ibb.co/7zzmmNz/devis.jpg" alt="devis"> 
+            </div>
+
+
+        </div>
+    </div>
+</div>
