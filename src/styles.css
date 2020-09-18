@@ -8,10 +8,6 @@
  {
      width: 100%;
  }
- .page_nav ul
- {
-     display: block;
- }
  .page_nav ul li:not(:last-of-type)::after
  {
      display: inline-block;
@@ -22,6 +18,7 @@
      margin-left: 14px;
      margin-right: 14px;
  }
+
  .page_nav ul li a
  {
      font-size: 18px;
@@ -147,6 +144,7 @@ a,a:hover{
 }
 
 .page-container{
+    width: 100%;
     background:#ffffff;
     padding-left:200px;
     padding-right: 200px
@@ -154,7 +152,8 @@ a,a:hover{
 
 .main-content{
     padding-top:116px;
-    min-height:100vh
+    min-height:100vh;
+    min-width: 100vw;
 }
 
 aside.menu-sidebar.d-none.d-lg-block.clr{
@@ -180,7 +179,33 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     right:0;
     left:0px;
     height:75px;
-    z-index:3
+    z-index:3;
+}
+
+@media only screen and (max-width: 600px) {
+    .header-desktop {
+        width: 100%;
+        width: 100vw;
+        height: 100vh;
+    }
+    .header-desktop div {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    .header-right {
+      float: none;
+    }
+    .page_nav ul {
+        display: block;
+        list-style-type: disc;
+    }
+    .page_nav ul li:not(:last-of-type)::after
+    {
+     display: block;
+     list-style-type: disc;
+     content: '';
+    }
 }
 
 .header-desktop .section-content{
@@ -992,6 +1017,7 @@ footer ul li{
         padding:0
     }
     .page-container{
+        width: 100%;
         position:relative;
         top:88px;
         padding-left:0
