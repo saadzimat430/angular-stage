@@ -8,9 +8,15 @@
  {
      width: 100%;
  }
+
+ .page_nav ul, li {
+    display: flex;
+    justify-content: center;
+ }
+
  .page_nav ul li:not(:last-of-type)::after
  {
-     display: inline-block;
+     
      font-size: 18px;
      font-weight: 700;
      color: #ca4ca0;
@@ -146,8 +152,7 @@ a,a:hover{
 .page-container{
     width: 100%;
     background:#ffffff;
-    padding-left:200px;
-    padding-right: 200px
+    padding-left:20px;
 }
 
 .main-content{
@@ -161,6 +166,16 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     z-index:99999999;
     height:75px;
     box-shadow:-2px 0 4px #0000003b
+}
+
+#z75 {
+    margin-top: 20px;
+    margin-right: 200px;
+}
+
+#devis_img {
+    display:block;
+    margin:auto;
 }
 
 /* 
@@ -206,6 +221,15 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
      list-style-type: disc;
      content: '';
     }
+
+    #z75 {
+        margin-right: 20px;
+    }
+
+    #none, #num_phone {
+        display: none;
+    }
+
 }
 
 .header-desktop .section-content{
@@ -1019,7 +1043,7 @@ footer ul li{
     .page-container{
         width: 100%;
         position:relative;
-        top:88px;
+        top:0px;
         padding-left:0
     }
      .page-wrapper{
@@ -1158,7 +1182,7 @@ footer ul li{
     }
     .page-container{
         position:relative;
-        top:66px;
+        top:0px;
         padding-left:0
     }
     .au-btn-submit{
