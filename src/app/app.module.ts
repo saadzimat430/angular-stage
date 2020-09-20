@@ -18,6 +18,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { DevisComponent } from './components/devis/devis.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
+import { ArticlesComponent } from './components/articles/articles.component';
 
 const routes: Routes = [
   {path: 'add-product', component: AddProductComponent},
@@ -44,7 +45,8 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     DevisComponent,
-    AddProductComponent
+    AddProductComponent,
+    ArticlesComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
