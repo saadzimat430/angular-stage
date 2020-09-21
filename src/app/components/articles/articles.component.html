@@ -1,1 +1,56 @@
-<p>articles works!</p>
+<div class="main-content">
+    <div class="col">
+        <app-product-category-menu></app-product-category-menu>
+    </div>
+
+    <div *ngFor="let article of articles" class="col-xl-4 col-md-6">
+
+        <p>{{ article.title }}</p>
+
+    </div>
+
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <p>Hello</p>
+            <div id="z75" class="row">
+
+                <!-- loop over articles -->
+                <div *ngFor="let article of articles" class="col-xl-4 col-md-6">
+
+                    <div class="product">
+                        <div class="product_image" style="display: block; position: relative; box-sizing: border-box;">
+                            <!-- <a routerLink="/products/{{ product.id }}"> -->
+                            <img style="width: 400px; height: 300px; display: block; margin: auto;"
+                                src="{{ article.imageUrl }}">
+                            <!-- </a> -->
+                        </div>
+                        <div class="product_content">
+                            <div class="product_info d-flex flex-row align-items-start justify-content-start">
+                                <div>
+                                    <div>
+                                        <div class="product_name">
+                                            <!-- <a routerLink="/products/{{ product.id }}"> -->
+                                            {{ article.title }}
+                                            <!-- </a> -->
+                                        </div>
+                                        <div class="product_category">{{ article.content }}</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- if products is empty -->
+                <div *ngIf="articles?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    Veuillez patienter ...
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
