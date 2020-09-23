@@ -18,16 +18,11 @@ export class ArticleService {
 
     return this.httpClient.get<GetResponseArticles>(this.baseUrl, {headers});
   }
+
 }
 
 interface GetResponseArticles {
   _embedded: {
     articles: Article[];
-  },
-  page: {
-    size: number,
-    totalElements: number,
-    totalPages: number,
-    number: number
   }
 } 

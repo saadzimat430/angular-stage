@@ -173,6 +173,23 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     margin-right: 200px;
 }
 
+#z76 {
+    margin-top: 20px;
+    margin-right: 200px;
+    display: grid;
+    grid-template-columns: auto;
+    padding: 10px;
+}
+
+#x55 {
+    width: auto;
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    
+}
+
 #devis_img {
     display:block;
     margin:auto;

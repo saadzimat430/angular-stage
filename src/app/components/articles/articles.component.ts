@@ -30,7 +30,7 @@ export class ArticlesComponent implements OnInit {
 
   processResult() {
     return data => {
-      this.articles = data._embedded.products;
+      this.articles = data._embedded.articles;
     };
   }
 
