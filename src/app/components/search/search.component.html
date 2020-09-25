@@ -3,7 +3,7 @@
     <input #myInput class="au-input au-input-xl" type="text" placeholder="Rechercher un produit"
         (keyup.enter)="doSearch(myInput.value)" />
 
-    <button class="au-btn-submit" (click)="doSearch(myInput.value)" >
+    <button id="searchBtn" class="au-btn-submit" (click)="doSearch(myInput.value)" >
         <i class="fa fa-search" aria-hidden="true"></i>
     </button>
 

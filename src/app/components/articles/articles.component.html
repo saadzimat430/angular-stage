@@ -12,19 +12,14 @@
 
                     <div id="x55">
                         <div class="product_image">
-                            <!-- <a routerLink="/products/{{ product.id }}"> -->
-                            <img style="width: 400px; height: 300px; display: block; margin: auto;"
-                                src="{{ article.imageUrl }}">
-                            <!-- </a> -->
+                            <img id="article_img" style="display: block; margin: auto;" src="{{ article.imageUrl }}">
                         </div>
-                        <div class="product_content">
+                        <div class="product_content" id="article_content">
                             <div class="product_info d-flex flex-row align-items-start justify-content-start">
                                 <div>
                                     <div>
                                         <div class="product_name">
-                                            <!-- <a routerLink="/products/{{ product.id }}"> -->
-                                            {{ article.title }}
-                                            <!-- </a> -->
+                                            <strong>{{ article.title }}</strong>
                                         </div>
                                         <div class="product_category">{{ article.content }}</div>
                                     </div>

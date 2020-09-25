@@ -83,8 +83,9 @@ button{
 }
 
 img{
-    max-width:100%;
-    height:auto
+    width: auto;
+    height: 100%;
+    max-width: 400px;
 }
 
 p{
@@ -248,6 +249,25 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
 
     #none, #num_phone {
         display: none;
+    }
+
+    #x55 {
+        width: 100%;
+        margin-right: 20px;
+        display: block;
+    }
+
+    #searchBtn {
+        height: 45px;
+    }
+
+    #article_img {
+        max-width: 300px;
+        height: auto;
+    }
+
+    #article_content {
+        clear: both;
     }
 
 }
@@ -634,7 +654,8 @@ input.au-input.au-input-xl{
 
  .product_content
  {
-     border: solid 2px #dbdbdb;
+    max-width: 400px;
+    border: solid 2px #dbdbdb;
  }
  .product_info
 {
@@ -673,7 +694,7 @@ input.au-input.au-input-xl{
 .product_category a
 {
 	font-size: 14px;
-	color: #969696;
+	color: #424242;
 	font-style: italic;
 	font-weight: 400;
 }
