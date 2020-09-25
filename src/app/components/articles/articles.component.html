@@ -8,10 +8,10 @@
             <div id="z76" class="row">
 
                 <!-- loop over articles -->
-                <div *ngFor="let article of articles" class="col-xl-6 col-md-6" style="margin:0 auto;">
+                <div *ngFor="let article of articles" class="col-xl-6 col-md-6" style="margin:0 auto; display: flex;">
 
-                    <div class="product" id="x55">
-                        <div class="product_image" style="display: block; position: relative; box-sizing: border-box;">
+                    <div id="x55">
+                        <div class="product_image">
                             <!-- <a routerLink="/products/{{ product.id }}"> -->
                             <img style="width: 400px; height: 300px; display: block; margin: auto;"
                                 src="{{ article.imageUrl }}">
