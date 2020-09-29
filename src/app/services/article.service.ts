@@ -14,9 +14,20 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) { }
 
   getArticlesList(): Observable<GetResponseArticles> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
-    return this.httpClient.get<GetResponseArticles>(this.baseUrl, {headers});
+    return this.httpClient.get<GetResponseArticles>(this.baseUrl);
+  }
+
+  createArticle(data): Observable<any> {
+    return this.httpClient.post(`${this.baseUrl}`, data);
+  }
+
+  updateArticle(id: number, value: any): Observable<Object> {
+    return this.httpClient.put(`${this.baseUrl}/${id}`, value);
+  }
+
+  deleteArticle(id: number): Observable<any> {
+    return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
 }

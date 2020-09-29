@@ -2,7 +2,11 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
 
-            <h3>Create Product</h3>
+            <div id="add_article">
+                <h3>Ajouter un nouveau produit</h3>
+            </div>
+            <br><br>
+
             <div style="width: 400px; margin: auto;">
                 <div class="submit-form">
                     <div *ngIf="!submitted">
@@ -42,9 +46,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="category">Catégorie</label>
+                            <label for="category">Catégorie &nbsp;</label>
                             <select [(ngModel)]="product.category">
-                                <option *ngFor="let pc of productCategories" [value]="pc.id">
+                                <option *ngFor="let pc of productCategories.slice(1)" [value]="pc.id">
                                   {{ pc.id }} - {{ pc.categoryName }}
                                 </option>
                             </select>

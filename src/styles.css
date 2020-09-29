@@ -199,6 +199,12 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     margin:auto;
 }
 
+#add_article {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* 
  * ----------------------------
  * Header Desktop Section

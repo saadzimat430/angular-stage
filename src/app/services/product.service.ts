@@ -18,11 +18,9 @@ export class ProductService {
   constructor(private httpClient: HttpClient) { }
 
   getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
-
     const searchUrl =  `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
 
-    return this.httpClient.get<GetResponseProducts>(searchUrl, {headers});
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
   getProductList(categoryId: number): Observable<Product[]> {
@@ -38,33 +36,29 @@ export class ProductService {
   }
 
   searchProductsPaginate(page: number, pageSize: number, theKeyword: string): Observable<GetResponseProducts> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
     const searchUrl =  `${this.baseUrl}/search/findByNameContaining?name=${theKeyword}&page=${page}&size=${pageSize}`;
 
-    return this.httpClient.get<GetResponseProducts>(searchUrl, {headers});
+    return this.httpClient.get<GetResponseProducts>(searchUrl);
   }
 
   getProductCategories(): Observable<ProductCategory[]> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
 
-    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl, {headers}).pipe(
+    return this.httpClient.get<GetResponseProductCategory>(this.categoryUrl).pipe(
       map(response => response._embedded.productCategory)
     );
   }
 
   getProduct(productId: number): Observable<Product> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
     
     // build URL based on product ID
     const productUrl = `${this.baseUrl}/${productId}`;
 
-    return this.httpClient.get<Product>(productUrl, {headers});
+    return this.httpClient.get<Product>(productUrl);
   }
 
   createProduct(data): Observable<any> {
-    const headers = new HttpHeaders({ Authorization: 'Basic ' + environment.apiKey });
-    return this.httpClient.post(`${this.baseUrl}`, data, {headers});
+    return this.httpClient.post(`${this.baseUrl}`, data);
   }
 
   updateProduct(id: number, value: any): Observable<Object> {

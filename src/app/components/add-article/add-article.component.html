@@ -1,0 +1,45 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div id="add_article">
+                <h3>Ajouter un nouvel article</h3>
+            </div>
+
+            <br><br>
+            
+            <div style="width: 400px; margin: auto;">
+                <div class="submit-form">
+                    <div *ngIf="!submitted">
+                        <div class="form-group">
+                            <label for="title">Titre de l'article</label>
+                            <input type="text" class="form-control" id="title" required [(ngModel)]="article.title"
+                                name="title" maxlength="45"/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content">Review of W3Schools:</label>
+                            <textarea class="form-control" name="content" rows="4" cols="50"
+                                maxlength="1000" required></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="imageUrl">URL de l'image</label>
+                            <input type="text" class="form-control" id="imageUrl" required
+                                [(ngModel)]="article.imageUrl" name="imageUrl" />
+                        </div>
+
+                        <button (click)="save()" class="btn btn-success">Submit</button>
+                    </div>
+
+                    <div *ngIf="submitted">
+                        <h4>You submitted successfully!</h4>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
