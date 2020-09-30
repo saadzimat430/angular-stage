@@ -20,6 +20,7 @@ import { DevisComponent } from './components/devis/devis.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
+import { AdminHomepageComponent } from './components/admin-homepage/admin-homepage.component';
 
 const routes: Routes = [
   {path: 'add-article', component: AddArticleComponent},
@@ -50,7 +51,8 @@ const routes: Routes = [
     DevisComponent,
     AddProductComponent,
     ArticlesComponent,
-    AddArticleComponent
+    AddArticleComponent,
+    AdminHomepageComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
