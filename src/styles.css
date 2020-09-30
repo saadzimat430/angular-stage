@@ -197,6 +197,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
 #devis_img {
     display:block;
     margin:auto;
+    max-width: 100%;
 }
 
 #add_article {
@@ -230,6 +231,10 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
 
 #prod_img {
     width: 400px; height: 300px; display: block
+}
+
+#devis_details {
+    font-size: xx-large;
 }
 
 @media only screen and (max-width: 600px) {
