@@ -3,7 +3,7 @@
         <app-product-category-menu></app-product-category-menu>
     </div>
     <div class="section-content section-content-p30">
-        <div class="container-fluid">
+        <div class="container-fluid" id="cfld">
             <div id="z75" class="row">
 
                 <!-- loop over products -->
@@ -12,8 +12,7 @@
                     <div class="product">
                         <div class="product_image" style="display: block; position: relative; box-sizing: border-box;">
                             <!-- <a routerLink="/products/{{ product.id }}"> -->
-                            <img style="width: 400px; height: 300px; display: block; margin: auto;"
-                                src="{{ product.imageUrl }}">
+                            <img src="{{ product.imageUrl }}" id="prod_img">
                             <!-- </a> -->
                         </div>
                         <div class="product_content">

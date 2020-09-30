@@ -224,6 +224,14 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
     z-index:3;
 }
 
+#cfld {
+    margin-left: 100px;
+}
+
+#prod_img {
+    width: 400px; height: 300px; display: block
+}
+
 @media only screen and (max-width: 600px) {
     .header-desktop {
         width: 100%;
@@ -274,6 +282,14 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
 
     #article_content {
         clear: both;
+    }
+
+    #cfld {
+        margin-left: 10px;
+    }
+
+    #prod_img {
+        width: 100%;
     }
 
 }
