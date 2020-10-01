@@ -6,6 +6,7 @@ import { HttpClient, HttpHeaders, HttpRequest, HttpEvent } from '@angular/common
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { ProductCategory } from 'src/app/common/product-category';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-product',
@@ -14,15 +15,33 @@ import { ProductCategory } from 'src/app/common/product-category';
 })
 export class AddProductComponent implements OnInit {
 
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username: string;
   product: Product = new Product();
   submitted = false;
   apiUrl: string = "";
   productCategories: ProductCategory[];
 
   constructor(private productService: ProductService,
-    private router: Router, private http: HttpClient) { }
+    private router: Router, private http: HttpClient,
+    private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+      this.username = user.username;
+    } else {
+      this.router.navigateByUrl('/login');
+    }
+
     this.listProductCategories();
   }
 

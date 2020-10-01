@@ -21,8 +21,11 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import { ArticlesComponent } from './components/articles/articles.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { AdminHomepageComponent } from './components/admin-homepage/admin-homepage.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  {path: 'admin', component: AdminHomepageComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'add-article', component: AddArticleComponent},
   {path: 'articles', component: ArticlesComponent},
   {path: 'add-product', component: AddProductComponent},
@@ -52,7 +55,8 @@ const routes: Routes = [
     AddProductComponent,
     ArticlesComponent,
     AddArticleComponent,
-    AdminHomepageComponent
+    AdminHomepageComponent,
+    LoginComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

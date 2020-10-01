@@ -1,69 +1,70 @@
 <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
+            <div *ngIf="showAdminBoard && isLoggedIn">
 
-            <div id="add_article">
-                <h3>Ajouter un nouveau produit</h3>
-            </div>
-            <br><br>
+                <div id="add_article">
+                    <h3>Ajouter un nouveau produit</h3>
+                </div>
+                <br><br>
 
-            <div style="width: 400px; margin: auto;">
-                <div class="submit-form">
-                    <div *ngIf="!submitted">
-                        <div class="form-group">
-                            <label for="sku">Référence</label>
-                            <input type="text" class="form-control" id="sku" required [(ngModel)]="product.sku"
-                                name="sku" />
+                <div style="width: 400px; margin: auto;">
+                    <div class="submit-form">
+                        <div *ngIf="!submitted">
+                            <div class="form-group">
+                                <label for="sku">Référence</label>
+                                <input type="text" class="form-control" id="sku" required [(ngModel)]="product.sku"
+                                    name="sku" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Nom</label>
+                                <input class="form-control" id="name" required [(ngModel)]="product.name" name="name" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description" required
+                                    [(ngModel)]="product.description" name="description" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="unitPrice">Prix Unitaire</label>
+                                <input type="text" class="form-control" id="unitPrice" required
+                                    [(ngModel)]="product.unitPrice" name="unitPrice" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="unitsInStock">Unités en stock</label>
+                                <input type="text" class="form-control" id="unitsInStock" required
+                                    [(ngModel)]="product.unitsInStock" name="unitsInStock" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="imageUrl">URL de l'image</label>
+                                <input type="url" class="form-control" id="imageUrl" required
+                                    [(ngModel)]="product.imageUrl" name="imageUrl" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="category">Catégorie &nbsp;</label>
+                                <select [(ngModel)]="product.category">
+                                    <option *ngFor="let pc of productCategories.slice(1)" [value]="pc.id">
+                                        {{ pc.id }} - {{ pc.categoryName }}
+                                    </option>
+                                </select>
+                            </div>
+
+                            <button (click)="save()" class="btn btn-success">Submit</button>
                         </div>
 
-                        <div class="form-group">
-                            <label for="name">Nom</label>
-                            <input class="form-control" id="name" required [(ngModel)]="product.name" name="name" />
+                        <div *ngIf="submitted">
+                            <h4>You submitted successfully!</h4>
                         </div>
-
-                        <div class="form-group">
-                            <label for="description">Description</label>
-                            <input type="text" class="form-control" id="description" required
-                                [(ngModel)]="product.description" name="description" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="unitPrice">Prix Unitaire</label>
-                            <input type="text" class="form-control" id="unitPrice" required
-                                [(ngModel)]="product.unitPrice" name="unitPrice" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="unitsInStock">Unités en stock</label>
-                            <input type="text" class="form-control" id="unitsInStock" required
-                                [(ngModel)]="product.unitsInStock" name="unitsInStock" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="imageUrl">URL de l'image</label>
-                            <input type="url" class="form-control" id="imageUrl" required [(ngModel)]="product.imageUrl"
-                                name="imageUrl" />
-                        </div>
-
-                        <div class="form-group">
-                            <label for="category">Catégorie &nbsp;</label>
-                            <select [(ngModel)]="product.category">
-                                <option *ngFor="let pc of productCategories.slice(1)" [value]="pc.id">
-                                  {{ pc.id }} - {{ pc.categoryName }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <button (click)="save()" class="btn btn-success">Submit</button>
-                    </div>
-
-                    <div *ngIf="submitted">
-                        <h4>You submitted successfully!</h4>
                     </div>
                 </div>
+
             </div>
-
-
         </div>
     </div>
 </div>

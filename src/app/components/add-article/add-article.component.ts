@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from 'src/app/common/article';
 import { ArticleService } from 'src/app/services/article.service';
+import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
   selector: 'app-add-article',
@@ -11,14 +12,30 @@ import { ArticleService } from 'src/app/services/article.service';
 })
 export class AddArticleComponent implements OnInit {
 
+  private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  username: string;
   article: Article = new Article();
   submitted = false;
-  apiUrl: string = "";
 
   constructor(private articleService: ArticleService,
-    private router: Router, private http: HttpClient) { }
+    private router: Router, private http: HttpClient,
+    private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
+
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+
+      this.username = user.username;
+    } else {
+      this.router.navigateByUrl('/login');
+    }
     
   }
 
