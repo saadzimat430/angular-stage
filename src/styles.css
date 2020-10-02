@@ -467,6 +467,14 @@ input.au-input.au-input-xl{
  * ----------------------------
  */
 
+ #admin_img_right {
+    float: right;
+ }
+
+ #admin_img_left {
+    float: left;
+ }
+
 
  #x75 {
     background:#fff;

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
@@ -12,7 +13,8 @@ export class AdminHomepageComponent implements OnInit {
   showAdminBoard = false;
   username: string;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -30,6 +32,14 @@ export class AdminHomepageComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  goToAddProduct() {
+    this.router.navigate(['/add-product']);
+  }
+
+  goToAddArticle() {
+    this.router.navigate(['/add-article']);
   }
 
 }

@@ -1,10 +1,20 @@
 <div class="main-content page-m">
     <div class="section-content section-content-p30">
         <div class="container-fluid">
-
             <div *ngIf="showAdminBoard && isLoggedIn">
 
-                <p>You are logged in !</p>
+                <figure id="admin_img_right">
+                    <img src="https://i.ibb.co/VtLmHTJ/undraw.png" (click)="goToAddProduct()">
+                    <figcaption style="text-align: center;"> Nouveau produit </figcaption>
+                </figure>
+
+                <figure id="admin_img_left">
+                    <img src="https://i.ibb.co/VtLmHTJ/undraw.png" (click)="goToAddArticle()">
+                    <figcaption style="text-align: center;"> Nouvel article </figcaption>
+                </figure>
+
+                <!-- <img id="admin_img_right" src="https://i.ibb.co/VtLmHTJ/undraw.png">
+                <img id="admin_img_left" src="https://i.ibb.co/VtLmHTJ/undraw.png"> -->
 
             </div>
         </div>
