@@ -59,7 +59,7 @@ export class AddArticleComponent implements OnInit {
           this.submitted = true;
         },
         error => {
-          console.log(error);
+          
         });
   }
 

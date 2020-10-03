@@ -78,7 +78,7 @@ export class AddProductComponent implements OnInit {
           this.submitted = true;
         },
         error => {
-          console.log(error);
+          
         });
   }
 
