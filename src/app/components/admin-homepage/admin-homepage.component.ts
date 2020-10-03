@@ -26,6 +26,8 @@ export class AdminHomepageComponent implements OnInit {
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
 
       this.username = user.username;
+    } else {
+      this.router.navigateByUrl('/login');
     }
   }
 

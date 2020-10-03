@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Article } from '../common/article';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +14,24 @@ export class ArticleService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getArticlesList(): Observable<GetResponseArticles> {
+  headers = new HttpHeaders({
+      'Authorization': 'Bearer '+ sessionStorage.getItem('auth-token')
+  })
 
+  getArticlesList(): Observable<GetResponseArticles> {
     return this.httpClient.get<GetResponseArticles>(this.baseUrl);
   }
 
   createArticle(data): Observable<any> {
-    return this.httpClient.post(`${this.baseUrl}`, data);
+    return this.httpClient.post(`${this.baseUrl}`, data, {headers: this.headers});
   }
 
   updateArticle(id: number, value: any): Observable<Object> {
-    return this.httpClient.put(`${this.baseUrl}/${id}`, value);
+    return this.httpClient.put(`${this.baseUrl}/${id}`, value, {headers: this.headers});
   }
 
   deleteArticle(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+    return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text', headers: this.headers });
   }
 
 }
