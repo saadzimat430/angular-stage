@@ -16,11 +16,10 @@ export class ProductService {
 
   private categoryUrl = 'https://murmuring-beach-44839.herokuapp.com/api/product-category';
 
-  constructor(private httpClient: HttpClient,
-    private tokenStorageService: TokenStorageService) { }
+  constructor(private httpClient: HttpClient) { }
 
   headers = new HttpHeaders({
-    'Authorization': 'Bearer '+ this.tokenStorageService.getToken
+    'Authorization': 'Bearer '+ sessionStorage.getItem('auth-token')
   })
 
   getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> {
