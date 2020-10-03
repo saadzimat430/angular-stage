@@ -1,7 +1,6 @@
 {
     "headers": {
       "/**": {
-        "Content-Security-Policy": "style-src 'self' 'unsafe-inline'; font-src 'self' data:; frame-ancestors 'none'; connect-src 'self' https://*.herokuapp.com",
         "Referrer-Policy": "no-referrer, strict-origin-when-cross-origin",
         "Strict-Transport-Security": "max-age=63072000; includeSubDomains",
         "X-Content-Type-Options": "nosniff",
