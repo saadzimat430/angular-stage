@@ -22,6 +22,8 @@ import { ArticlesComponent } from './components/articles/articles.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
 import { AdminHomepageComponent } from './components/admin-homepage/admin-homepage.component';
 import { LoginComponent } from './components/login/login.component';
+import { DeleteProductComponent } from './components/delete-product/delete-product.component';
+import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomepageComponent},
@@ -56,7 +58,9 @@ const routes: Routes = [
     ArticlesComponent,
     AddArticleComponent,
     AdminHomepageComponent,
-    LoginComponent
+    LoginComponent,
+    DeleteProductComponent,
+    DeleteArticleComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
