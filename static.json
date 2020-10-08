@@ -1,19 +1,18 @@
 {
-    "headers": {
-      "/**": {
-        "Referrer-Policy": "no-referrer, strict-origin-when-cross-origin",
-        "X-Content-Type-Options": "nosniff",
-        "X-Frame-Options": "DENY",
-        "X-XSS-Protection": "1; mode=block",
-        "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'",
-        "Permissions-Policy": "geolocation=(), microphone=()"
-      }
-    },
-    "https_only": true,
-    "root": "static/",
-    "routes": {
-      "/**": "index.html"
+  "headers": {
+    "/**": {
+      "Strict-Transport-Security": "max-age=0",
+      "Referrer-Policy": "no-referrer, strict-origin-when-cross-origin",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "X-XSS-Protection": "1; mode=block",
+      "Feature-Policy": "accelerometer 'none'; camera 'none'; microphone 'none'",
+      "Permissions-Policy": "geolocation=(), microphone=()"
     }
+  },
+  "https_only": false,
+  "root": "static/",
+  "routes": {
+    "/**": "index.html"
   }
-  
-  
+}
