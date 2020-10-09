@@ -1,6 +1,7 @@
 {
   "headers": {
     "/**": {
+      "Access-Control-Allow-Origin": "*",
       "Strict-Transport-Security": "max-age=0",
       "Referrer-Policy": "no-referrer, strict-origin-when-cross-origin",
       "X-Content-Type-Options": "nosniff",
