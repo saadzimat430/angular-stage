@@ -68,7 +68,7 @@ export class AddProductComponent implements OnInit {
       imageUrl: this.product.imageUrl,
       active: true,
       unitsInStock: this.product.unitsInStock,
-      category: "https://murmuring-beach-44839.herokuapp.com/api/product-category/" + this.product.category
+      category: "http://localhost:8080/api/product-category/" + this.product.category
     };
 
     this.productService.createProduct(data)

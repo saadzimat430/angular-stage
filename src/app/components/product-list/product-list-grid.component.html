@@ -32,11 +32,14 @@
                                         <strong>{{ product.unitPrice | currency:'MAD':'MAD '}}</strong>
                                     </div>
                                 </div>
+
+
                             </div>
 
                             <div>
                                 <a style="display: flex; justify-content: center;">
-                                    <button type="button" (click)="save(product.sku, product.name)" class="btn btn-primary">Créer devis</button>
+                                    <button (click)="addToCart(product)" class="btn btn-primary btn-sm">Ajouter au
+                                        panier</button>
                                 </a>
                                 <br>
                             </div>
@@ -69,7 +72,7 @@
 
                 <!-- if products is empty -->
                 <div *ngIf="products?.length == 0" class="alert alert-warning col-md-12" role="alert">
-                    Veuillez patienter ...
+                    Cette catégorie est vide.
                 </div>
 
             </div>

@@ -12,7 +12,7 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
 
-  cartItems: CartItem[] = [];
+  cartItems: CartItem[] = (localStorage.getItem('cart-items')==null ? [] : JSON.parse(localStorage.getItem('cart-items')));
 
   totalPrice: number = 0;
   totalQuantity: number = 0;

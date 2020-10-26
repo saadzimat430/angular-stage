@@ -10,12 +10,12 @@ import { TokenStorageService } from './token-storage.service';
 })
 export class ArticleService {
 
-  private baseUrl = 'https://murmuring-beach-44839.herokuapp.com/api/articles';
+  private baseUrl = 'http://localhost:8080/api/articles';
 
   constructor(private httpClient: HttpClient) { }
 
   headers = new HttpHeaders({
-      'Authorization': 'Bearer '+ sessionStorage.getItem('auth-token')
+      'Authorization': 'Bearer '+ localStorage.getItem('auth-token')
   })
 
   getArticlesList(): Observable<GetResponseArticles> {

@@ -9,7 +9,7 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartDetailsComponent implements OnInit {
 
-  cartItems: CartItem[] = [];
+  cartItems: CartItem[] = (localStorage.getItem('cart-items')==null ? [] : JSON.parse(localStorage.getItem('cart-items')));
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
@@ -20,8 +20,6 @@ export class CartDetailsComponent implements OnInit {
   }
 
   listCartDetails() {
-    this.cartItems = this.cartService.cartItems;
-
     this.cartService.totalPrice.subscribe(
       data => this.totalPrice = data
     );
@@ -43,5 +41,6 @@ export class CartDetailsComponent implements OnInit {
 
   remove(cartItem: CartItem) {
     this.cartService.remove(cartItem);
+    window.location.reload();
   }
 }

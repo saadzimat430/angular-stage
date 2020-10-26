@@ -12,14 +12,14 @@ import { TokenStorageService } from './token-storage.service';
 })
 export class ProductService { 
 
-  private baseUrl = 'https://murmuring-beach-44839.herokuapp.com/api/products';
+  private baseUrl = 'http://localhost:8080/api/products';
 
-  private categoryUrl = 'https://murmuring-beach-44839.herokuapp.com/api/product-category';
+  private categoryUrl = 'http://localhost:8080/api/product-category';
 
   constructor(private httpClient: HttpClient) { }
 
   headers = new HttpHeaders({
-    'Authorization': 'Bearer '+ sessionStorage.getItem('auth-token')
+    'Authorization': 'Bearer '+ localStorage.getItem('auth-token')
   })
 
   getProductListPaginate(page: number, pageSize: number, categoryId: number): Observable<GetResponseProducts> {
