@@ -59,10 +59,13 @@ export class CartService {
 
   decrementQuantity(cartItem: CartItem) {
     cartItem.quantity--;
+    const itemIndex = JSON.parse(localStorage.getItem('cart-items')).findIndex(temp => temp.id === cartItem.id);
 
     if (cartItem.quantity === 0) {
       this.remove(cartItem);
+      setTimeout(window.location.reload.bind(window.location), 1000);
     } else {
+      this.cartItems[itemIndex].quantity--;
       this.computeCartTotals();
     }
 

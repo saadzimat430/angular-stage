@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from 'src/app/common/cart-item';
+import { Order } from 'src/app/common/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -12,12 +14,17 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
 
-  cartItems: CartItem[] = (localStorage.getItem('cart-items')==null ? [] : JSON.parse(localStorage.getItem('cart-items')));
+  submitted = false;
+
+  cartItems: CartItem[] = (localStorage.getItem('cart-items') == null ? [] : JSON.parse(localStorage.getItem('cart-items')));
+
+  order: Order = new Order();
 
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private cartService: CartService) { }
+  constructor(private formBuilder: FormBuilder, private cartService: CartService,
+    private orderService: OrderService) { }
 
   listCartDetails() {
     this.cartItems = this.cartService.cartItems;
@@ -41,31 +48,63 @@ export class CheckoutComponent implements OnInit {
       customer: this.formBuilder.group({
         firstName: [''],
         lastName: [''],
-        email: ['']
+        email: [''],
+        phoneNumber: ['']
       }),
 
       shippingAddress: this.formBuilder.group({
         street: [''],
         city: [''],
         zipCode: [''],
-      }),
-
-      creditCard: this.formBuilder.group({
-        cardType: [''],
-        nameOnCard: [''],
-        cardNumber: [''],
-        securityCode: [''],
-        expirationMonth: [''],
-        expirationYear: ['']
       })
     });
 
   }
 
+  save(): void {
+
+    const data = {
+      firstName: this.order.firstName,
+      lastName: this.order.lastName,
+      email: this.order.email,
+      phoneNumber: this.order.phoneNumber,
+      city: this.order.city,
+      street: this.order.street,
+      postalCode: this.order.postalCode,
+      productsList: this.getCartItems(),
+      totalPrice: this.totalPrice,
+      status: "pending"
+    };
+
+    this.orderService.createOrder(data)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.submitted = true;
+        },
+        error => {
+
+        });
+  }
+
+  getCartItems(): string {
+    var response = "";
+    var ci = JSON.parse(localStorage.getItem('cart-items'));
+
+    for (var i = 0; i < ci.length; i++) {
+      if (i !== ci.length - 1) {
+        response += ci[i].quantity + "x " + ci[i].name + " ; ";
+      } else {
+        response += ci[i].quantity + "x " + ci[i].name;
+      }
+    }
+
+    return response;
+  }
+
   onSubmit() {
-    console.log("Handling the submit button");
-    console.log(this.checkoutFormGroup.get('customer').value);
-    console.log("Email is " + this.checkoutFormGroup.get('customer').value.email);
+    this.submitted = true;
+    this.save();
   }
 
 }

@@ -4,6 +4,7 @@ import { Product } from 'src/app/common/product';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-product-list',
@@ -23,10 +24,11 @@ export class ProductListComponent implements OnInit {
 
   previousKeyword: string = null;
 
-  constructor(private productService:ProductService,
+  constructor(private productService: ProductService,
     private cartService: CartService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    public toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
@@ -34,8 +36,14 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  showSuccess(name: string) {
+    this.toastr.success(name+" was added to cart successfully.", 'Item added to cart', {
+      timeOut: 3000,
+    });
+  }
+
   save(sku: string, name: string) {
-    this.router.navigate(['/devis'], { 
+    this.router.navigate(['/devis'], {
       queryParams: {
         ref: sku,
         name: name
@@ -63,10 +71,10 @@ export class ProductListComponent implements OnInit {
     }
 
     this.previousKeyword = theKeyword;
-//    console.log(`keyword=${theKeyword}, pageNumber=${this.pageNumber}`)
+    //    console.log(`keyword=${theKeyword}, pageNumber=${this.pageNumber}`)
 
 
-    this.productService.searchProductsPaginate(this.pageNumber-1, this.pageSize, theKeyword).subscribe(
+    this.productService.searchProductsPaginate(this.pageNumber - 1, this.pageSize, theKeyword).subscribe(
       this.processResult()
     )
   }
@@ -75,7 +83,7 @@ export class ProductListComponent implements OnInit {
     // check if "id" param is available
     const hasCategoryId: boolean = this.route.snapshot.paramMap.has('id');
 
-    if(hasCategoryId) {
+    if (hasCategoryId) {
       // get the "id" param string and convert it to number using "+"
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id');
     } else {
@@ -91,7 +99,7 @@ export class ProductListComponent implements OnInit {
 
     this.previousCategoryId = this.currentCategoryId;
 
-  // pagenumber -1 because pagination in spring REST is 0 based, means first page has index 0
+    // pagenumber -1 because pagination in spring REST is 0 based, means first page has index 0
     this.productService.getProductListPaginate(this.pageNumber - 1, this.pageSize, this.currentCategoryId).subscribe(
       this.processResult()
     );
@@ -119,6 +127,8 @@ export class ProductListComponent implements OnInit {
     const cartItem = new CartItem(product);
 
     this.cartService.addToCart(cartItem);
+
+    this.showSuccess(product.name);
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartItem } from 'src/app/common/cart-item';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
@@ -9,14 +11,22 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class CartDetailsComponent implements OnInit {
 
-  cartItems: CartItem[] = (localStorage.getItem('cart-items')==null ? [] : JSON.parse(localStorage.getItem('cart-items')));
+  cartItems: CartItem[] = (localStorage.getItem('cart-items') == null ? [] : JSON.parse(localStorage.getItem('cart-items')));
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private toastr: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.listCartDetails();
+  }
+
+  showInfo(name: string) {
+    this.toastr.info(name+" was removed from the cart successfully ", 'Item removed from cart', {
+      timeOut: 1000,
+    });
   }
 
   listCartDetails() {
@@ -37,10 +47,13 @@ export class CartDetailsComponent implements OnInit {
 
   decrementQuantity(cartItem: CartItem) {
     this.cartService.decrementQuantity(cartItem);
+    this.showInfo(cartItem.name);
   }
 
   remove(cartItem: CartItem) {
     this.cartService.remove(cartItem);
-    window.location.reload();
+    setTimeout(window.location.reload.bind(window.location), 1000);
+    this.showInfo(cartItem.name);
   }
+
 }

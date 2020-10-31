@@ -78,13 +78,13 @@ export class AddProductComponent implements OnInit {
           this.submitted = true;
         },
         error => {
-          
+
         });
   }
 
   onSubmit() {
     this.submitted = true;
-    this.save();    
+    this.save();
   }
 
 }

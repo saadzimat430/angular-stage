@@ -5,7 +5,6 @@ import { Product } from '../common/product';
 import { map } from 'rxjs/operators';
 import { ProductCategory } from '../common/product-category';
 import { environment } from 'src/environments/environment';
-import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
