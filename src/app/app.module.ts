@@ -19,7 +19,6 @@ import { CartStatusComponent } from './components/cart-status/cart-status.compon
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { DevisComponent } from './components/devis/devis.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { ArticlesComponent } from './components/articles/articles.component';
 import { AddArticleComponent } from './components/add-article/add-article.component';
@@ -27,6 +26,7 @@ import { AdminHomepageComponent } from './components/admin-homepage/admin-homepa
 import { LoginComponent } from './components/login/login.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
+import { OrderSuccessComponent } from './components/order-success/order-success.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomepageComponent},
@@ -41,7 +41,7 @@ const routes: Routes = [
   {path: 'category/:id', component: ProductListComponent},
   {path: 'category', component: ProductListComponent},
   {path: 'products', component: ProductListComponent},
-  {path: 'devis', component: DevisComponent},
+  {path: 'order-successful', component: OrderSuccessComponent},
   {path: '', redirectTo:'/products', pathMatch:'full'},
   {path: '**', redirectTo:'/products', pathMatch: 'full'}
 ];
@@ -56,14 +56,14 @@ const routes: Routes = [
     CartStatusComponent,
     CartDetailsComponent,
     CheckoutComponent,
-    DevisComponent,
     AddProductComponent,
     ArticlesComponent,
     AddArticleComponent,
     AdminHomepageComponent,
     LoginComponent,
     DeleteProductComponent,
-    DeleteArticleComponent
+    DeleteArticleComponent,
+    OrderSuccessComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

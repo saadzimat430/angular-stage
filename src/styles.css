@@ -4,6 +4,38 @@
  * ----------------------------
  */
 
+ .myModal {
+    display: block; /* Hidden by default */
+    z-index: 100; /* Sit on top */
+    margin: auto;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    max-width: 600px;
+  }
+  
+  /* Modal Content */
+  .my-modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
  .page_nav
  {
      width: 100%;

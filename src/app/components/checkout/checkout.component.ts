@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CartService } from 'src/app/services/cart.service';
 import { CartItem } from 'src/app/common/cart-item';
@@ -23,9 +23,20 @@ export class CheckoutComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity: number = 0;
 
-  constructor(private formBuilder: FormBuilder, private cartService: CartService,
-    private orderService: OrderService) { }
+  @ViewChild('myModal') modal: ElementRef;
 
+  constructor(private formBuilder: FormBuilder, private cartService: CartService,
+    private orderService: OrderService, private renderer: Renderer2) { }
+
+  showModal() {
+    this.renderer.setStyle(this.modal.nativeElement, 'display', 'block');
+    // setTimeout(window.location.reload.bind('/'), 1000);
+  }
+  
+  closeModal() {
+    this.renderer.setStyle(this.modal.nativeElement, 'display', 'none');
+  }
+  
   listCartDetails() {
     this.cartItems = this.cartService.cartItems;
 

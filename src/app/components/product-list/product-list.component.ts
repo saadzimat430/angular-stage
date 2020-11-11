@@ -42,15 +42,6 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  save(sku: string, name: string) {
-    this.router.navigate(['/devis'], {
-      queryParams: {
-        ref: sku,
-        name: name
-      }
-    });
-  }
-
   listProducts() {
 
     this.searchMode = this.route.snapshot.paramMap.has('keyword');

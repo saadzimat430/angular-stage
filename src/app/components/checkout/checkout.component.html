@@ -14,7 +14,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="firstName" [(ngModel)]="order.firstName" type="text">
+                                <input formControlName="firstName" [(ngModel)]="order.firstName" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -24,7 +24,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="lastName" [(ngModel)]="order.lastName" type="text">
+                                <input formControlName="lastName" [(ngModel)]="order.lastName" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
                                 <input formControlName="email" [(ngModel)]="order.email" type="text"
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
                                 <input formControlName="phoneNumber" [(ngModel)]="order.phoneNumber" type="text"
-                                    pattern="[0-9]{10}">
+                                    pattern="[0-9]{10}" required>
                             </div>
                         </div>
                     </div>
@@ -60,7 +60,7 @@
                         <div class="col-md-2"> <label>City</label> </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="city" [(ngModel)]="order.city" class="select-css">
+                                <select formControlName="city" [(ngModel)]="order.city" class="select-css" required>
                                     <option>Casablanca</option>
                                     <option>Rabat</option>
                                     <option>Marrakech</option>
@@ -80,7 +80,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="street" [(ngModel)]="order.street" type="text">
+                                <input formControlName="street" [(ngModel)]="order.street" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -90,7 +90,7 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="zipCode" [(ngModel)]="order.postalCode" type="text">
+                                <input formControlName="zipCode" [(ngModel)]="order.postalCode" type="text" required>
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,9 @@
 
                 <!-- submit button -->
                 <div class="text-center">
-                    <button type="submit" class="btn btn-info">Confirm Purchase</button>
+                    <div *ngIf="totalPrice > 0">
+                        <button type="submit" class="btn btn-info">Confirm Purchase</button>
+                    </div>
                 </div>
 
             </form>
