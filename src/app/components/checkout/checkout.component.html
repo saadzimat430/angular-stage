@@ -14,7 +14,11 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="firstName" [(ngModel)]="order.firstName" type="text" required>
+                                <input formControlName="firstName" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('customer.firstName').touched || submitted) && checkoutFormGroup.get('customer.firstName').errors?.required">
+                                    First name is required
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -24,7 +28,11 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="lastName" [(ngModel)]="order.lastName" type="text" required>
+                                <input formControlName="lastName" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('customer.lastName').touched || submitted) && checkoutFormGroup.get('customer.lastName').errors?.required">
+                                    Last name is required
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -34,8 +42,15 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="email" [(ngModel)]="order.email" type="text"
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                                <input formControlName="email" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('customer.email').touched || submitted) && checkoutFormGroup.get('customer.email').errors?.required">
+                                    A valid email is required
+                                </span>
+                                <span class="text-danger"
+                                    *ngIf="checkoutFormGroup.get('customer.email').touched && checkoutFormGroup.get('customer.email').errors?.email">
+                                    Enter a valid email address
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -45,8 +60,11 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="phoneNumber" [(ngModel)]="order.phoneNumber" type="text"
-                                    pattern="[0-9]{10}" required>
+                                <input formControlName="phoneNumber" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('customer.phoneNumber').touched || submitted) && checkoutFormGroup.get('customer.phoneNumber').errors?.required">
+                                    Phone number is required
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -60,7 +78,7 @@
                         <div class="col-md-2"> <label>City</label> </div>
                         <div class="col-md-9">
                             <div class="input-space">
-                                <select formControlName="city" [(ngModel)]="order.city" class="select-css" required>
+                                <select formControlName="city" class="select-css" required>
                                     <option>Casablanca</option>
                                     <option>Rabat</option>
                                     <option>Marrakech</option>
@@ -71,16 +89,24 @@
                                     <option>Salé</option>
                                     <option>Oujda</option>
                                 </select>
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('shippingAddress.city').touched || submitted) && checkoutFormGroup.get('shippingAddress.city').errors?.required">
+                                    City is required
+                                </span>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-2"> <label>Street</label> </div>
+                        <div class="col-md-2"> <label>Address</label> </div>
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="street" [(ngModel)]="order.street" type="text" required>
+                                <input formControlName="street" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('shippingAddress.street').touched || submitted) && checkoutFormGroup.get('shippingAddress.street').errors?.required">
+                                    Address is required
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -90,7 +116,11 @@
                         <div class="col-md-9">
                             <div class="input-space">
                                 <!-- firstName from the component .ts -->
-                                <input formControlName="zipCode" [(ngModel)]="order.postalCode" type="text" required>
+                                <input formControlName="zipCode" type="text">
+                                <span class="text-danger"
+                                    *ngIf="(checkoutFormGroup.get('shippingAddress.zipCode').touched || submitted) && checkoutFormGroup.get('shippingAddress.zipCode').errors?.required">
+                                    ZIP Code is required
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -112,7 +142,8 @@
 
                 <!-- submit button -->
                 <div class="text-center">
-                    <div *ngIf="totalPrice > 0">
+                    <!-- <div *ngIf="totalPrice > 0"> -->
+                    <div>
                         <button type="submit" class="btn btn-info">Confirm Purchase</button>
                     </div>
                 </div>

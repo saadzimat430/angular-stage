@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { ProductService } from './services/product.service';
 
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
@@ -27,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomepageComponent},
@@ -63,7 +64,8 @@ const routes: Routes = [
     LoginComponent,
     DeleteProductComponent,
     DeleteArticleComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    OrdersComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

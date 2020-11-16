@@ -4,16 +4,16 @@
 
             <div *ngIf="cartItems.length > 0">
 
-                <table class="table table-bordered">
+                <table class="table table-bordered" style="width: 75%; margin: 0 auto;">
                     <tr>
-                        <th width="20%">Product Image</th>
-                        <th width="50%">Product Details</th>
-                        <th width="30%"></th>
+                        <th width="33%">Product Image</th>
+                        <th width="33%">Product Details</th>
+                        <th width="33%"></th>
                     </tr>
 
                     <tr *ngFor="let cartItem of cartItems">
-                        <td>
-                            <img src="{{ cartItem.imageUrl }}" class="img-responsive" width="150px" />
+                        <td style="text-align: center;">
+                            <img src="{{ cartItem.imageUrl }}" class="img-responsive" style="margin: auto; width: 300px; height: 300px;" />
                         </td>
                         <td>
                             <p>{{ cartItem.name }}</p>
@@ -24,7 +24,7 @@
                                 <label>Quantity:</label>
                                 <div class="row no-gutters">
                                     <div class="col">
-                                        <button (click)="incrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                                        <button (click)="incrementQuantity(cartItem)" class="btn btn-primary2 btn-sm">
                                             <i class="fas fa-plus"></i>
                                         </button>
                                     </div>
@@ -34,7 +34,7 @@
                                     </div>
 
                                     <div class="col">
-                                        <button (click)="decrementQuantity(cartItem)" class="btn btn-primary btn-sm">
+                                        <button (click)="decrementQuantity(cartItem)" class="btn btn-primary2 btn-sm">
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
 
-                            <button (click)="remove(cartItem)" class="btn btn-primary btn-sm mt-2">Remove</button>
+                            <button (click)="remove(cartItem)" class="btn btn-primary2 btn-sm mt-2">Remove</button>
                             <p class="mt-2">Subtotal: {{ cartItem.quantity * cartItem.unitPrice | currency:'MAD'}}</p>
                         </td>
                     </tr>
