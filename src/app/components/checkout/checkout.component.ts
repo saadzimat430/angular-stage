@@ -1,11 +1,13 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CartService } from 'src/app/services/cart.service';
-import { CartItem } from 'src/app/common/cart-item';
-import { Order } from 'src/app/common/order';
-import { OrderService } from 'src/app/services/order.service';
-import { ValidationService } from 'src/app/services/validation.service';
+import {Component, OnInit} from '@angular/core';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import {CartService} from 'src/app/services/cart.service';
+import {CartItem} from 'src/app/common/cart-item';
+import {Order} from 'src/app/common/order';
+import {OrderService} from 'src/app/services/order.service';
+import {ValidationService} from 'src/app/services/validation.service';
+import {Router} from '@angular/router';
 
+// @ts-ignore
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
@@ -15,18 +17,20 @@ export class CheckoutComponent implements OnInit {
 
   checkoutFormGroup: FormGroup;
 
-  submitted = false;
+  submitted: boolean;
 
   cartItems: CartItem[] = (localStorage.getItem('cart-items') == null ? [] : JSON.parse(localStorage.getItem('cart-items')));
 
   order: Order = new Order();
 
-  totalPrice: number = 0;
-  totalQuantity: number = 0;
+  totalPrice = 0;
+  totalQuantity = 0;
 
   constructor(private formBuilder: FormBuilder, private cartService: CartService,
-    private orderService: OrderService, private fb: FormBuilder,
-    private validator: ValidationService) { }
+              private orderService: OrderService, private fb: FormBuilder,
+              private validator: ValidationService,
+              private router: Router) {
+  }
 
   listCartDetails() {
     this.cartItems = this.cartService.cartItems;
@@ -77,29 +81,28 @@ export class CheckoutComponent implements OnInit {
       postalCode: shippingAddress.zipCode,
       productsList: this.getCartItems(),
       totalPrice: this.totalPrice,
-      status: "pending"
+      status: 'pending'
     };
 
-    this.orderService.createOrder(data)
-      .subscribe(
-        response => {
-          console.log(response);
-          this.submitted = true;
-        },
-        error => {
-
-        });
+    if (data.firstName !== '' && data.lastName !== '' && data.email !== '' && data.phoneNumber !== '') {
+      this.orderService.createOrder(data)
+        .subscribe(
+          response => {
+            console.log(response);
+          });
+      this.submitted = true;
+    }
   }
 
   getCartItems(): string {
-    var response = "";
-    var ci = JSON.parse(localStorage.getItem('cart-items'));
+    let response = '';
+    const ci = JSON.parse(localStorage.getItem('cart-items'));
 
-    for (var i = 0; i < ci.length; i++) {
+    for (let i = 0; i < ci.length; i++) {
       if (i !== ci.length - 1) {
-        response += ci[i].quantity + "x " + ci[i].name + " ; ";
+        response += ci[i].quantity + 'x ' + ci[i].name + ' ; ';
       } else {
-        response += ci[i].quantity + "x " + ci[i].name;
+        response += ci[i].quantity + 'x ' + ci[i].name;
       }
     }
 
@@ -107,16 +110,18 @@ export class CheckoutComponent implements OnInit {
   }
 
   get formControlCustomer() {
-    return this.checkoutFormGroup.controls['customer'];
+    return this.checkoutFormGroup.controls.customer;
   }
 
   get formControlShipping() {
-    return this.checkoutFormGroup.controls['shippingAddress'];
+    return this.checkoutFormGroup.controls.shippingAddress;
   }
 
-  onSubmit() {
-    this.submitted = true;
+  onSubmit(): void {
     this.save();
+    if (this.submitted) {
+      this.router.navigateByUrl('/order-successful');
+    }
   }
 
 }

@@ -14,7 +14,7 @@ export class AdminHomepageComponent implements OnInit {
   username: string;
 
   constructor(private tokenStorageService: TokenStorageService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -36,12 +36,16 @@ export class AdminHomepageComponent implements OnInit {
     window.location.reload();
   }
 
-  goToAddProduct() {
+  goToAddProduct(): void {
     this.router.navigate(['/add-product']);
   }
 
-  goToAddArticle() {
+  goToAddArticle(): void {
     this.router.navigate(['/add-article']);
+  }
+
+  goToOrdersList(): void {
+    this.router.navigate(['/orders']);
   }
 
 }

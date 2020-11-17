@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/common/order';
-import { OrderService } from 'src/app/services/order.service';
+import {Component, OnInit} from '@angular/core';
+import {Order} from 'src/app/common/order';
+import {OrderService} from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-orders',
@@ -9,22 +9,23 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrdersComponent implements OnInit {
 
-  orders: any;
+  orders: Order[];
 
   constructor(
     private order: OrderService
   ) {
+  }
+
+  ngOnInit(): void {
     this.getOrders();
     console.log(this.orders);
   }
 
   getOrders() {
-    this.order.getOrdersList().subscribe((data) => {
-      this.orders = data;
-    })
-  }
-
-  ngOnInit(): void {
+    this.order.getOrdersList().subscribe(response => {
+        this.orders = response._embedded.orders;
+      }
+    );
   }
 
 }
