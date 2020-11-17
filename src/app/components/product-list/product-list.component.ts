@@ -14,30 +14,29 @@ import { ToastrService } from 'ngx-toastr';
 export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
-  previousCategoryId: number = 1;
-  currentCategoryId: number = 2;
-  searchMode: boolean = false;
+  previousCategoryId = 1;
+  currentCategoryId = 2;
+  searchMode = false;
 
-  pageNumber: number = 1;
-  pageSize: number = 6;
-  totalElements: number = 0;
+  pageNumber = 1;
+  pageSize = 6;
+  totalElements = 0;
 
   previousKeyword: string = null;
 
   constructor(private productService: ProductService,
-    private cartService: CartService,
-    private route: ActivatedRoute,
-    private router: Router,
-    public toastr: ToastrService) { }
+              private cartService: CartService,
+              private route: ActivatedRoute,
+              public toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(() => {
       this.listProducts();
-    })
+    });
   }
 
   showSuccess(name: string) {
-    this.toastr.success(name+" was added to cart successfully.", 'Item added to cart', {
+    this.toastr.success(name + ' was added to cart successfully.', 'Item added to cart', {
       timeOut: 3000,
     });
   }
@@ -56,8 +55,7 @@ export class ProductListComponent implements OnInit {
   handleSearchProducts() {
     const theKeyword: string = this.route.snapshot.paramMap.get('keyword');
 
-    // if we have a different keyword than previous, then set pageNumber to 1
-    if (this.previousKeyword != theKeyword) {
+    if (this.previousKeyword !== theKeyword) {
       this.pageNumber = 1;
     }
 
@@ -67,7 +65,7 @@ export class ProductListComponent implements OnInit {
 
     this.productService.searchProductsPaginate(this.pageNumber - 1, this.pageSize, theKeyword).subscribe(
       this.processResult()
-    )
+    );
   }
 
   handleListProducts() {
@@ -84,7 +82,7 @@ export class ProductListComponent implements OnInit {
 
     // if we have a different category_id than previous
     // then reset pageNumber to 1
-    if (this.previousCategoryId != this.currentCategoryId) {
+    if (this.previousCategoryId !== this.currentCategoryId) {
       this.pageNumber = 1;
     }
 

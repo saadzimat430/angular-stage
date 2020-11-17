@@ -15,8 +15,8 @@ export class ArticleService {
   constructor(private httpClient: HttpClient) { }
 
   headers = new HttpHeaders({
-      'Authorization': 'Bearer '+ localStorage.getItem('auth-token')
-  })
+      Authorization: 'Bearer ' + localStorage.getItem('auth-token')
+  });
 
   getArticlesList(): Observable<GetResponseArticles> {
     return this.httpClient.get<GetResponseArticles>(this.baseUrl);
@@ -26,7 +26,7 @@ export class ArticleService {
     return this.httpClient.post(`${this.baseUrl}`, data, {headers: this.headers});
   }
 
-  updateArticle(id: number, value: any): Observable<Object> {
+  updateArticle(id: number, value: any): Observable<any> {
     return this.httpClient.put(`${this.baseUrl}/${id}`, value, {headers: this.headers});
   }
 
@@ -39,5 +39,5 @@ export class ArticleService {
 interface GetResponseArticles {
   _embedded: {
     articles: Article[];
-  }
-} 
+  };
+}

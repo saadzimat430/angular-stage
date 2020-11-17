@@ -100,7 +100,7 @@ export class CheckoutComponent implements OnInit {
 
     for (let i = 0; i < ci.length; i++) {
       if (i !== ci.length - 1) {
-        response += ci[i].quantity + 'x ' + ci[i].name + ' ; ';
+        response += ci[i].quantity + 'x ' + ci[i].name + ' + ';
       } else {
         response += ci[i].quantity + 'x ' + ci[i].name;
       }

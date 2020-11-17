@@ -21,8 +21,8 @@ export class OrderService {
     return this.httpClient.post(`${this.baseUrl}`, data);
   }
 
-  updateOrder(id: number, value: any): Observable<any> {
-    return this.httpClient.put(`${this.baseUrl}/${id}`, value);
+  updateOrderStatus(id: number, data: any): Observable<any> {
+    return this.httpClient.patch(`${this.baseUrl}/${id}`, data, {responseType: 'json'});
   }
 
   deleteOrder(id: number): Observable<any> {

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TokenStorageService } from './services/token-storage.service';
+import {CartService} from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -11,8 +12,11 @@ export class AppComponent implements OnInit {
   isLoggedIn = false;
   showAdminBoard = false;
   username: string;
+  totalPrice: number;
+  totalQuantity: number;
 
-  constructor(private tokenStorageService: TokenStorageService) { }
+  constructor(private tokenStorageService: TokenStorageService,
+              private cartService: CartService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -25,10 +29,24 @@ export class AppComponent implements OnInit {
 
       this.username = user.username;
     }
+
+    this.updateCartStatus();
   }
 
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  updateCartStatus(): void {
+
+    // subscribe to the cart totalPrice and totalQuantity
+    this.cartService.totalPrice.subscribe(
+      data => this.totalPrice = data
+    );
+
+    this.cartService.totalQuantity.subscribe(
+      data => this.totalQuantity = data
+    );
   }
 }

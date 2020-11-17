@@ -1,23 +1,24 @@
-import { Injectable } from '@angular/core';
-import { CartItem } from '../common/cart-item';
-import { Subject } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {CartItem} from '../common/cart-item';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  cartItems: CartItem[] = (localStorage.getItem('cart-items')==null ? [] : JSON.parse(localStorage.getItem('cart-items')));
+  cartItems: CartItem[] = (localStorage.getItem('cart-items') == null ? [] : JSON.parse(localStorage.getItem('cart-items')));
 
   totalPrice: Subject<number> = new Subject<number>();
   totalQuantity: Subject<number> = new Subject<number>();
 
-  constructor() { }
+  constructor() {
+  }
 
   addToCart(cartItem: CartItem) {
 
-    let alreadyExistsInCart: boolean = false;
-    let existingCartItem: CartItem = undefined;
+    let alreadyExistsInCart = false;
+    let existingCartItem: CartItem;
 
     // check if we already have item in cart
     if (this.cartItems.length > 0) {
@@ -26,7 +27,7 @@ export class CartService {
 
     }
 
-    alreadyExistsInCart = (existingCartItem != undefined);
+    alreadyExistsInCart = (existingCartItem !== undefined);
 
     if (alreadyExistsInCart) {
       existingCartItem.quantity++;
@@ -40,11 +41,11 @@ export class CartService {
   }
 
   computeCartTotals() {
-    let totalPriceValue: number = 0;
-    let totalQuantityValue: number = 0;
+    let totalPriceValue = 0;
+    let totalQuantityValue = 0;
 
     if (this.cartItems != null && []) {
-      for (let currentCartItem of this.cartItems) {
+      for (const currentCartItem of this.cartItems) {
         totalPriceValue += currentCartItem.quantity * currentCartItem.unitPrice;
         totalQuantityValue += currentCartItem.quantity;
       }
@@ -55,6 +56,16 @@ export class CartService {
       window.localStorage.setItem('cart-items', JSON.stringify(this.cartItems));
     }
 
+  }
+
+  incrementQuantity(cartItem: CartItem) {
+    cartItem.quantity++;
+    const itemIndex = JSON.parse(localStorage.getItem('cart-items')).findIndex(temp => temp.id === cartItem.id);
+
+    this.cartItems[itemIndex].quantity++;
+    this.computeCartTotals();
+
+    window.localStorage.setItem('cart-items', JSON.stringify(this.cartItems));
   }
 
   decrementQuantity(cartItem: CartItem) {

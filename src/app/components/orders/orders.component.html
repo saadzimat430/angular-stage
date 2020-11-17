@@ -2,7 +2,54 @@
   <div class="section-content section-content-p30">
     <div class="container-fluid">
 
-      {{ orders }}
+      <div class="contenaire">
+        <!-- No data message -->
+        <h2 style="color: white; text-align: center;">Orders List</h2>
+        <table class="table table-bordered" style="background-color: white;">
+          <thead class="table-success">
+          <tr>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">City</th>
+            <th scope="col">Street</th>
+            <th scope="col">Postal Code</th>
+            <th scope="col">Products list</th>
+            <th scope="col">Total price</th>
+            <th scope="col">Status</th>
+          </tr>
+          </thead>
+          <tbody *ngFor="let order of orders; let i = index">
+          <tr>
+
+            <td>{{order.firstName}}</td>
+            <td>{{order.lastName != undefined ? order.lastName : "N/A"}}</td>
+            <td>{{order.email != undefined ? order.email : "N/A"}}</td>
+            <td>{{order.phoneNumber != undefined ? order.phoneNumber : "N/A"}}</td>
+            <td>{{order.city != undefined ? order.city : "N/A"}}</td>
+            <td>{{order.street != undefined ? order.street : "N/A"}}</td>
+            <td>{{order.postalCode != undefined ? order.postalCode : "N/A"}}</td>
+            <td>{{order.productsList != undefined ? order.productsList : "N/A"}}</td>
+            <td>{{order.totalPrice != undefined ? order.totalPrice : "N/A"}}</td>
+
+            <td class="text-center edit-block">
+              <div class="form-group">
+                <select class="custom-select form-control" [(ngModel)]="newStatus">
+                  <option *ngFor="let s of status">{{s}}
+                  </option>
+                </select>
+              </div>
+
+            <span class="edit">
+              <button type="button" (click)="updateStatus(order.id)" class="btn btn-info btn-sm"> Update Status </button>
+            </span>
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
 
     </div>
   </div>

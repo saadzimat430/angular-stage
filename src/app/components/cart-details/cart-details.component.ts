@@ -12,19 +12,19 @@ import { Router } from '@angular/router';
 export class CartDetailsComponent implements OnInit {
 
   cartItems: CartItem[] = (localStorage.getItem('cart-items') == null ? [] : JSON.parse(localStorage.getItem('cart-items')));
-  totalPrice: number = 0;
-  totalQuantity: number = 0;
+  totalPrice = 0;
+  totalQuantity = 0;
 
   constructor(private cartService: CartService,
-    private toastr: ToastrService,
-    private router: Router) { }
+              private toastr: ToastrService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.listCartDetails();
   }
 
   showInfo(name: string) {
-    this.toastr.info(name+" was removed from the cart successfully ", 'Item removed from cart', {
+    this.toastr.info(name + ' was removed from the cart successfully ', 'Item removed from cart', {
       timeOut: 1000,
     });
   }
@@ -42,7 +42,7 @@ export class CartDetailsComponent implements OnInit {
   }
 
   incrementQuantity(cartItem: CartItem) {
-    this.cartService.addToCart(cartItem);
+    this.cartService.incrementQuantity(cartItem);
   }
 
   decrementQuantity(cartItem: CartItem) {

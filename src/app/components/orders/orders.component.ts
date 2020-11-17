@@ -10,18 +10,30 @@ import {OrderService} from 'src/app/services/order.service';
 export class OrdersComponent implements OnInit {
 
   orders: Order[];
+  status = ['completed', 'pending', 'cancelled'];
+  newStatus: string;
 
   constructor(
     private order: OrderService
   ) {
+    this.getOrders();
   }
 
   ngOnInit(): void {
-    this.getOrders();
     console.log(this.orders);
   }
 
-  getOrders() {
+  updateStatus(id: string): void {
+    const data = {
+      status: this.newStatus
+    };
+
+    this.order.updateOrderStatus(+id, data).subscribe(response =>
+      console.log(response.status)
+    );
+  }
+
+  getOrders(): void {
     this.order.getOrdersList().subscribe(response => {
         this.orders = response._embedded.orders;
       }
