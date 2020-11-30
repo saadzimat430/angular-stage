@@ -1,7 +1,7 @@
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs';
-import {Order} from '../common/order';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Order } from '../common/order';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import {Order} from '../common/order';
 export class OrderService {
 
   private baseUrl = 'http://localhost:8080/api/orders';
+  private apiUrl = 'http://localhost:8080/api';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -22,11 +23,15 @@ export class OrderService {
   }
 
   updateOrderStatus(id: number, data: any): Observable<any> {
-    return this.httpClient.patch(`${this.baseUrl}/${id}`, data, {responseType: 'json'});
+    return this.httpClient.patch(`${this.baseUrl}/${id}`, data, { responseType: 'json' });
+  }
+
+  sendConfirmationEmail(data: any) {
+    return this.httpClient.post(`${this.apiUrl}/sendEmail`, data);
   }
 
   deleteOrder(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.baseUrl}/${id}`, {responseType: 'text'});
+    return this.httpClient.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
   }
 
 }

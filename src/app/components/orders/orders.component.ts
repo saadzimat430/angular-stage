@@ -10,7 +10,7 @@ import {OrderService} from 'src/app/services/order.service';
 export class OrdersComponent implements OnInit {
 
   orders: Order[];
-  status = ['completed', 'pending', 'cancelled'];
+  status = ['shipped', 'completed', 'cancelled'];
   newStatus: string;
 
   constructor(
@@ -33,6 +33,20 @@ export class OrdersComponent implements OnInit {
     );
   }
 
+  sendConfirmationEmail(firstName: string, email: string): void {
+    const data = {
+      firstName: firstName,
+      orderStatus: this.newStatus,
+      email: email
+    }
+
+    this.order.sendConfirmationEmail(data).subscribe(response =>
+      console.log(response)
+    );
+
+    setTimeout(function(){ window.location.reload(); }, 4000);
+  }
+
   getOrders(): void {
     this.order.getOrdersList().subscribe(response => {
         this.orders = response._embedded.orders;
@@ -41,3 +55,4 @@ export class OrdersComponent implements OnInit {
   }
 
 }
+
