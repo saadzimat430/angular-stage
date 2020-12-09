@@ -21,7 +21,7 @@
               <app-search></app-search>
             </div>
 
-            <div class="col-lg-2"></div>
+            <div class="col-lg-1"></div>
 
             <div class="col-lg-2" id="num_phone">
               <div class="header-block-sav" style="float: right;">
@@ -34,6 +34,10 @@
 
             <div class="col-lg-2">
               <app-cart-status></app-cart-status>
+            </div>
+
+            <div class="col-lg-1" *ngIf="showAdminBoard && isLoggedIn">
+              <i class="fas fa-sign-out-alt fa-3x" style="background-color: gray;" (click)="logout()"></i>
             </div>
 
             <div class="account-wrap"></div>

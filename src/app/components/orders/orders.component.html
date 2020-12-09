@@ -2,7 +2,7 @@
     <div class="section-content section-content-p30">
         <div class="container-fluid">
 
-            <div class="contenaire">
+            <div *ngIf="showAdminBoard && isLoggedIn" class="contenaire">
                 <h2 style="color: white; text-align: center;">Orders List</h2>
                 <table class="table table-bordered" style="background-color: white;">
                     <thead class="table-success">

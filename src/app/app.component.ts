@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './services/token-storage.service';
 import {CartService} from './services/cart.service';
 
@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
 
   logout(): void {
     this.tokenStorageService.signOut();
-    window.location.reload();
   }
 
   updateCartStatus(): void {
@@ -50,3 +49,4 @@ export class AppComponent implements OnInit {
     );
   }
 }
+

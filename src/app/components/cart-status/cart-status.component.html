@@ -1,4 +1,4 @@
-<div class="cart-area d-n">
+<div *ngIf="!showAdminBoard || !isLoggedIn" class="cart-area d-n">
     <a routerLink="/cart-details">
         <div class="total">{{ totalPrice | currency: 'MAD' }}
             <span>{{ totalQuantity }}</span>

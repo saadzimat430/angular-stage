@@ -49,7 +49,7 @@
                             <div class="form-group">
                                 <label for="category">Catégorie &nbsp;</label>
                                 <select [(ngModel)]="product.category" class="select-css">
-                                    <option *ngFor="let pc of productCategories.slice(1)" [value]="pc.id">
+                                    <option *ngFor="let pc of productCategories" [value]="pc.id">
                                         {{ pc.id }} - {{ pc.categoryName }}
                                     </option>
                                 </select>

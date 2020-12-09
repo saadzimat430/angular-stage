@@ -80,6 +80,10 @@ export class AddProductComponent implements OnInit {
         error => {
 
         });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   }
 
   onSubmit() {
