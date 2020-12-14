@@ -1,0 +1,34 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div *ngIf="showAdminBoard && isLoggedIn">
+
+                <div id="add_article">
+                    <h3>Ajouter une nouvelle catégorie</h3>
+                </div>
+
+                <br><br>
+
+                <div style="width: 400px; margin: auto;">
+                    <div class="submit-form">
+                        <div *ngIf="!submitted">
+                            <div class="form-group">
+                                <label for="categoryName">Nom de catégorie</label>
+                                <input type="text" class="form-control" id="categoryName" required [(ngModel)]="category.categoryName"
+                                    name="categoryName" maxlength="45" />
+                            </div>
+
+                            <button (click)="save()" class="btn btn-success">Submit</button>
+                        </div>
+
+                        <div *ngIf="submitted">
+                            <h4>You submitted successfully!</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,29 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Article } from 'src/app/common/article';
-import { ArticleService } from 'src/app/services/article.service';
+import { ProductCategory } from 'src/app/common/product-category';
+import { ProductService } from 'src/app/services/product.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
 
 @Component({
-  selector: 'app-add-article',
-  templateUrl: './add-article.component.html',
-  styleUrls: ['./add-article.component.css']
+  selector: 'app-add-category',
+  templateUrl: './add-category.component.html',
+  styleUrls: ['./add-category.component.css']
 })
-export class AddArticleComponent implements OnInit {
+export class AddCategoryComponent implements OnInit {
 
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   username: string;
-  article: Article = new Article();
+  category: ProductCategory = new ProductCategory();
   submitted = false;
 
-  constructor(private articleService: ArticleService,
+  constructor(private categoryService: ProductService,
     private router: Router, private http: HttpClient,
     private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {
+
     this.isLoggedIn = !!this.tokenStorageService.getToken();
 
     if (this.isLoggedIn) {
@@ -36,23 +37,21 @@ export class AddArticleComponent implements OnInit {
     } else {
       this.router.navigateByUrl('/login');
     }
-    
+
   }
 
-  newArticle(): void {
+  newCategory(): void {
     this.submitted = false;
-    this.article = new Article();
+    this.category = new ProductCategory();
   }
 
   save(): void {
 
     const data = {
-      title: this.article.title,
-      content: this.article.content,
-      imageUrl: this.article.imageUrl,
+      categoryName: this.category.categoryName
     };
 
-    this.articleService.createArticle(data)
+    this.categoryService.createCategory(data)
       .subscribe(
         response => {
           console.log(response);

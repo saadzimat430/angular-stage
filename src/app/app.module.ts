@@ -20,20 +20,18 @@ import { CartDetailsComponent } from './components/cart-details/cart-details.com
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import { ArticlesComponent } from './components/articles/articles.component';
-import { AddArticleComponent } from './components/add-article/add-article.component';
 import { AdminHomepageComponent } from './components/admin-homepage/admin-homepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { DeleteProductComponent } from './components/delete-product/delete-product.component';
 import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { AddCategoryComponent } from './components/add-category/add-category.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomepageComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'add-article', component: AddArticleComponent},
-  {path: 'articles', component: ArticlesComponent},
+  {path: 'add-category', component: AddCategoryComponent},
   {path: 'add-product', component: AddProductComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
@@ -59,14 +57,13 @@ const routes: Routes = [
     CartDetailsComponent,
     CheckoutComponent,
     AddProductComponent,
-    ArticlesComponent,
-    AddArticleComponent,
     AdminHomepageComponent,
     LoginComponent,
     DeleteProductComponent,
     DeleteArticleComponent,
     OrderSuccessComponent,
-    OrdersComponent
+    OrdersComponent,
+    AddCategoryComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

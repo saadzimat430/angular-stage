@@ -65,6 +65,10 @@ export class ProductService {
     return this.httpClient.post(`${this.baseUrl}`, data, {headers: this.headers});
   }
 
+  createCategory(data): Observable<any> {
+    return this.httpClient.post(`${this.categoryUrl}`, data, {headers: this.headers});
+  }
+
   updateProduct(id: number, value: any): Observable<Object> {
     return this.httpClient.put(`${this.baseUrl}/${id}`, value, {headers: this.headers});
   }

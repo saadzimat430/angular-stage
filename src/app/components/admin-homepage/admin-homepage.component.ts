@@ -40,8 +40,8 @@ export class AdminHomepageComponent implements OnInit {
     this.router.navigate(['/add-product']);
   }
 
-  goToAddArticle(): void {
-    this.router.navigate(['/add-article']);
+  goToAddCategory(): void {
+    this.router.navigate(['/add-category']);
   }
 
   goToOrdersList(): void {
