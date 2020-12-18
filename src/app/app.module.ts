@@ -22,17 +22,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import { AdminHomepageComponent } from './components/admin-homepage/admin-homepage.component';
 import { LoginComponent } from './components/login/login.component';
-import { DeleteProductComponent } from './components/delete-product/delete-product.component';
-import { DeleteArticleComponent } from './components/delete-article/delete-article.component';
 import { OrderSuccessComponent } from './components/order-success/order-success.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { AddCategoryComponent } from './components/add-category/add-category.component';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
 
 const routes: Routes = [
   {path: 'admin', component: AdminHomepageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'add-category', component: AddCategoryComponent},
   {path: 'add-product', component: AddProductComponent},
+  {path: 'edit-product', component: EditProductComponent},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
@@ -59,11 +59,10 @@ const routes: Routes = [
     AddProductComponent,
     AdminHomepageComponent,
     LoginComponent,
-    DeleteProductComponent,
-    DeleteArticleComponent,
     OrderSuccessComponent,
     OrdersComponent,
-    AddCategoryComponent
+    AddCategoryComponent,
+    EditProductComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -859,7 +859,7 @@ figure figcaption {
 }
 
 .product_name a {
-  font-size: 30px;
+  font-size: 25px;
   line-height: 1.2;
   color: #4a4a4a;
   font-weight: 500;
@@ -1181,7 +1181,8 @@ table.table.table-bordered th {
 }
 
 .detail-section {
-  margin-top: 60px
+  margin: 0 auto;
+  width: 50%;
 }
 
 .detail-img {

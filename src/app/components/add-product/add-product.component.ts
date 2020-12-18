@@ -25,7 +25,7 @@ export class AddProductComponent implements OnInit {
   productCategories: ProductCategory[];
 
   constructor(private productService: ProductService,
-    private router: Router, private http: HttpClient,
+    private router: Router,
     private tokenStorageService: TokenStorageService) { }
 
   ngOnInit(): void {

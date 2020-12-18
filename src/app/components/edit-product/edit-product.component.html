@@ -1,0 +1,51 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <div class="contenaire">
+                <h2 style="color: white; text-align: center;">Products List</h2>
+                <table class="table table-bordered" style="background-color: white; table-layout: auto;">
+                    <thead class="table-success">
+                        <tr>
+                            <th scope="col">SKU</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Image Link</th>
+                            <th scope="col">Units In Stock</th>
+                            <th scope="col">Edit</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let p of products$ | async; index as i">
+                        <ng-container>
+                            <tr>
+
+                                <td><input type="text" id="sku" name="sku" placeholder={{p.sku}} [(ngModel)]="p.sku">
+                                </td>
+                                <td><input type="text" id="name" name="name" placeholder={{p.name}} [(ngModel)]="p.name">
+                                </td>
+                                <td><input type="text" id="description" name="description"
+                                        placeholder={{p.description}} [(ngModel)]="p.description"></td>
+                                <td><input type="number" id="unitPrice" name="unitPrice" placeholder={{p.unitPrice}}
+                                        [(ngModel)]="p.unitPrice">
+                                </td>
+                                <td><input type="text" id="imageUrl" name="imageUrl" placeholder={{p.imageUrl}}
+                                        [(ngModel)]="p.imageUrl"></td>
+                                <td><input type="number" id="unitsInStock" name="unitsInStock"
+                                        placeholder={{p.unitsInStock}} [(ngModel)]="p.unitsInStock"></td>
+                                <td class="text-center edit-block">
+                                    <span class="edit" style="display: flex;">
+                                        <button type="button" class="btn btn-success btn-sm " style="margin-right: 5px;"
+                                            (click)="update(p)"> Update</button>
+                                        <button type="button" class="btn btn-warning btn-sm " (click)="delete(p)"> Delete</button>
+                                    </span>
+                                </td>
+
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>

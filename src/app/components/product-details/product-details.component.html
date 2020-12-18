@@ -1,19 +1,26 @@
-<div class="detail-section">
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+            <div class="detail-section">
 
-    <div class="container-fluid">
+                <div class="container-fluid">
 
-        <img src="{{ product.imageUrl }}" class="detail-img">
+                    <img src="{{ product.imageUrl }}" class="detail-img">
 
-        <h3>{{ product.name }}</h3>
-        <div class="price">{{ product.unitPrice | currency:'MAD' }}</div>
-        <button (click)="addToCart()" class="btn btn-primary2 btn-sm">Ajouter au panier</button>
+                    <h3>{{ product.name }}</h3>
+                    <div class="price">{{ product.unitPrice | currency:'MAD ' }}</div>
+                    <br>
+                    <button (click)="addToCart()" class="btn btn-primary2 btn-sm">Ajouter au panier</button>
 
-        <hr>
-        <h4>Description</h4>
-        <p>{{ product.description }}</p>
+                    <hr>
+                    <strong>Description</strong>
+                    <p>{{ product.description }}</p>
 
-        <a routerLink="/products" class="mt-5">Retour aux produits</a>
+                    <a routerLink="/products" class="mt-5">Retour aux produits</a>
 
+                </div>
+
+            </div>
+        </div>
     </div>
-
 </div>

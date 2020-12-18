@@ -20,9 +20,9 @@
                                 <div>
                                     <div>
                                         <div class="product_name">
-                                            <!-- <a routerLink="/products/{{ product.id }}"> -->
-                                            {{ product.name }}
-                                            <!-- </a> -->
+                                            <a routerLink="/products/{{ product.id }}">
+                                                {{ product.name }}
+                                            </a>
                                         </div>
                                         <div class="product_category">Réf: {{ product.sku }}</div>
                                     </div>
@@ -43,27 +43,6 @@
                                 </a>
                                 <br>
                             </div>
-
-                            <!-- <div class="product_buttons">
-                                <div class="text-right d-flex flex-row align-items-start justify-content-start">
-                                    <div
-                                        class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
-                                        <div>
-                                            <div><img src="images/heart_2.svg" class="svg" alt="">
-                                                <div>+</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
-                                        <div>
-                                            <div><img src="images/cart.svg" class="svg" alt="">
-                                                <div>+</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> -->
 
                         </div>
                     </div>
@@ -86,7 +65,9 @@
                     <div class="col-md-6">
                         <div class="row">
                             <div class="col-md-8" style="padding-left: 30%;">
-                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize" [collectionSize]="totalElements" [maxSize]="5" [boundaryLinks]="true" (pageChange)="listProducts()">
+                                <ngb-pagination [(page)]="pageNumber" [pageSize]="pageSize"
+                                    [collectionSize]="totalElements" [maxSize]="5" [boundaryLinks]="true"
+                                    (pageChange)="listProducts()">
 
                                 </ngb-pagination>
                             </div>
